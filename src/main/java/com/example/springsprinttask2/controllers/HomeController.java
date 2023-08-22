@@ -1,6 +1,7 @@
 package com.example.springsprinttask2.controllers;
 
 import com.example.springsprinttask2.models.ApplicationRequest;
+import com.example.springsprinttask2.repositories.ApplicationReqRep;
 import com.example.springsprinttask2.services.ApplicationReqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.function.LongToIntFunction;
 
@@ -15,6 +17,8 @@ import java.util.function.LongToIntFunction;
 public class HomeController {
     @Autowired
     ApplicationReqService applicationReqService;
+    @Autowired
+    ApplicationReqRep applicationReqRep;
 
 
     @GetMapping("/")
@@ -22,6 +26,14 @@ public class HomeController {
         model.addAttribute("info", applicationReqService.getAppReq());
         return "home";
     }
+
+
+//@GetMapping("/search")
+//public String searchPage(@RequestParam(name = "search") String search ,Model model) {
+//    System.out.println(search);
+//    model.addAttribute("items",applicationReqRep.findAllByUserName(search));
+//    return "home";
+//}
 
     @GetMapping("/Add-Page")
     public String addPage() {
