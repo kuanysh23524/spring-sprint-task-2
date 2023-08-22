@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="Layout/main.html">
+<head>
+    <meta charset="UTF-8">
+    <title>Add-Page</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form action="/Add-Page" method="post">
+        <div class="col-4 mx-auto mt-4">
+            <div class="mb-3">
+                <label class="form-label">ФИО:</label>
+                <input type="text" name="userName" class="form-control" placeholder="ФИО:">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Курс:</label>
+                <input type="text" name="courseName" class="form-control" placeholder="Курс:">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Телефон:</label>
+                <input type="text" name="phone" class="form-control" placeholder="Телефон:">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Комментарии:</label> <br>
+                <!--                <input type="text" name="name" class="form-control" placeholder="Insert name:">-->
+                <textarea maxlength='10000000000' minlength='1' name="commentary" class="form-control" style="height: 150px;" placeholder="Комментарии" >
+              </textarea>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Добавить заявку</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

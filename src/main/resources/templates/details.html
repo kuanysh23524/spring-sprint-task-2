@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="Layout/main.html">
+<head>
+    <meta charset="UTF-8">
+    <title>details</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+
+    <div class="col-4 mx-auto mt-4">
+        <div class="mb-3">
+            <label class="form-label">ФИО:</label>
+            <input type="text" name="userName" class="form-control" placeholder="ФИО:"
+                   th:value="${det.getUserName()}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Курс:</label>
+            <input type="text" name="courseName" class="form-control" placeholder="Курс:"
+                   th:value="${det.getCourseName()}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Телефон:</label>
+            <input type="text" name="phone" class="form-control" placeholder="Телефон:"
+                   th:value="${det.getPhone()}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Комментарии:</label> <br>
+            <!--                <input type="text" name="name" class="form-control" placeholder="Insert name:">-->
+            <textarea maxlength='10000000000' minlength='1' name="commentary" class="form-control"
+                      style="height: 150px;" placeholder="Комментарии" th:text="${det.getCommentary()}">
+              </textarea>
+        </div>
+
+        <div class="mb-3">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal0">
+                Обработать заявку
+            </button>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal1">
+                Удалить заявку
+            </button>
+        </div>
+    </div>
+
+    <!--удаление модалка-->
+    <form th:action="${'/delete/'+det.id}" method="post">
+        <div class="modal fade" id="exampleModal1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Действительно хотите удалить?</h1>
+                        <button type="button" class="btn-close btn-outline-danger" data-bs-dismiss="modal"
+                                aria-label="Close">x
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 th:text="${det.getUserName()}"></h5>
+                        <h5 th:text="${det.getPhone()}"></h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">закрыть</button>
+                        <button class="btn btn-outline-danger">Удалить заявку</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!--изменение параметров-->
+    <form th:action="${'/edit-appReq/'+det.id}" method="post">
+        <div class="modal fade" id="exampleModal0" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Редактирование</h1>
+                        <button type="button" class="btn-close btn-outline-danger" data-bs-dismiss="modal"
+                                aria-label="Close">x
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label>ФИО:</label>
+                            <input type="text" class="form-control" name="userName" th:value="${det.getUserName()}">
+                        </div>
+                        <div class="mb-3">
+                            <label>название курса:</label>
+                            <input type="text" class="form-control" name="courseName" th:value="${det.getCourseName()}">
+                        </div>
+                        <div class="mb-3">
+                            <label>комментарии:</label>
+                            <input type="text" class="form-control" name="commentary" th:value="${det.getCommentary()}">
+                        </div>
+                        <div class="mb-3">
+                            <label>номер телефона:</label>
+                            <input type="text" class="form-control" name="phone" th:value="${det.getPhone()}">
+                        </div>
+<!--                        <input type="hidden" th:text="${det.setHandled(false)}" name="handled">-->
+<!--                        <input type="hidden" th:field="*{det.setHandled(true)}"  name="handled">-->
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-outline-success">изменить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

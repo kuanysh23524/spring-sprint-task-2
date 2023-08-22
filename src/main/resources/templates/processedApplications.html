@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="Layout/main.html">
+<head th:insert="~{head}">
+  <meta charset="UTF-8">
+  <title>newAppReq</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+  <div class="col-12 mx-auto d-flex flex-wrap">
+    <div th:each="a : ${prs}" class="card mb-4 rounded-3 shadow-sm"
+         style="width: 47%; justify-content: space-between ; margin: 20px;">
+
+      <div class="card-body">
+
+        <b style="color: red" th:text="${!a.isHandled()?'*(новая)':' '}"></b>
+        <!--                    <div th:text="'Заявка от ' + ${inf.getUserName()}"></div>-->
+        <div class="d-flex">
+          <div>Заявка от</div>
+          <strong th:text="${a.getUserName()}" class="ml-1"></strong>
+        </div>
+        <h1 class="card-title pricing-card-title" th:text="${'Курс: ' + a.getCourseName()}"></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li th:text="${a.getCommentary()}"></li>
+          <li th:text="${'Тел: ' + a.getPhone()}"></li>
+          <li><a th:href="${'/details/'+a.id}">Подробнее...</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
