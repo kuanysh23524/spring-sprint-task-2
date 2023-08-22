@@ -35,8 +35,8 @@ public class ApplicationReqService {
     }
 
     // Редактирование по id
-    public void editAppReqById(ApplicationRequest applicationRequest){
-        if (!applicationRequest.isHandled()){
+    public void editAppReqById(ApplicationRequest applicationRequest) {
+        if (!applicationRequest.isHandled()) {
             applicationRequest.setHandled(true);
         }
         applicationReqRep.save(applicationRequest);
@@ -44,22 +44,22 @@ public class ApplicationReqService {
 
     // сортировка новых заявок
 
-   public List<ApplicationRequest> sortNew(List<ApplicationRequest> applicationRequests1){
+    public List<ApplicationRequest> sortNew(List<ApplicationRequest> applicationRequests1) {
         List<ApplicationRequest> applicationRequests = new ArrayList<>();
-       for (ApplicationRequest app: applicationRequests1) {
-           if (!app.isHandled()){
-               applicationRequests.add(app);
-           }
-       }
-       return applicationRequests;
-   }
+        for (ApplicationRequest app : applicationRequests1) {
+            if (!app.isHandled()) {
+                applicationRequests.add(app);
+            }
+        }
+        return applicationRequests;
+    }
 
-   // сортировка обработанных заявок
+    // сортировка обработанных заявок
 
-    public List<ApplicationRequest> sortOld(List<ApplicationRequest> applicationRequestsDontSorted){
+    public List<ApplicationRequest> sortOld(List<ApplicationRequest> applicationRequestsDontSorted) {
         List<ApplicationRequest> applicationRequestsSortedList = new ArrayList<>();
-        for (ApplicationRequest app: applicationRequestsDontSorted) {
-            if (app.isHandled()){
+        for (ApplicationRequest app : applicationRequestsDontSorted) {
+            if (app.isHandled()) {
                 applicationRequestsSortedList.add(app);
             }
         }

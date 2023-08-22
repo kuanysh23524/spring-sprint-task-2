@@ -43,27 +43,27 @@ public class HomeController {
     }
 
     @PostMapping("/delete/{id}")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id) {
         System.out.println(id);
         applicationReqService.delete(id);
         return "redirect:/";
     }
 
     @PostMapping("/edit-appReq/{id}")
-    public String editAppReq( ApplicationRequest applicationRequest ){
+    public String editAppReq(ApplicationRequest applicationRequest) {
         applicationReqService.editAppReqById(applicationRequest);
         return "redirect:/";
     }
 
     @GetMapping("/newAppReq")
-    public String newAppReq(Model model){
-        model.addAttribute("newApp" , applicationReqService.sortNew(applicationReqService.getAppReq()));
+    public String newAppReq(Model model) {
+        model.addAttribute("newApp", applicationReqService.sortNew(applicationReqService.getAppReq()));
         return "/newAppReq";
     }
 
     @GetMapping("/processedApplications")
-    public String processedAppReq(Model model){
-        model.addAttribute("prs" , applicationReqService.sortOld(applicationReqService.getAppReq()));
+    public String processedAppReq(Model model) {
+        model.addAttribute("prs", applicationReqService.sortOld(applicationReqService.getAppReq()));
         return "processedApplications";
     }
 }

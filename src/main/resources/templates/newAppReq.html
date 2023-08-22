@@ -22,7 +22,7 @@
                 </div>
                 <h1 class="card-title pricing-card-title" th:text="${'Курс: ' + a.getCourseName()}"></h1>
                 <ul class="list-unstyled mt-3 mb-4">
-                        <li th:text="${a.getCommentary()}"></li>
+                    <li th:text="${a.getCommentary()}"></li>
                     <li th:text="${'Тел: ' + a.getPhone()}"></li>
                     <li><a th:href="${'/details/'+a.id}">Подробнее...</a></li>
                 </ul>
