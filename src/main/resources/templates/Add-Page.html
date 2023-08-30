@@ -16,7 +16,10 @@
 
             <div class="mb-3">
                 <label class="form-label">Курс:</label>
-                <input type="text" name="courseName" class="form-control" placeholder="Курс:">
+                <!--                <input type="text" name="courseName" class="form-control" placeholder="Курс:">-->
+                <select name="course.id" class="form-select">
+                    <option th:each="course:${courses}" th:text="${course.getName()}" th:value="${course.id}"></option>
+                </select>
             </div>
 
             <div class="mb-3">

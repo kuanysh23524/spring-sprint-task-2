@@ -19,7 +19,7 @@
                     <div>Заявка от</div>
                     <strong th:text="${a.getUserName()}" class="ml-1"></strong>
                 </div>
-                <h1 class="card-title pricing-card-title" th:text="${'Курс: ' + a.getCourseName()}"></h1>
+                <h1 class="card-title pricing-card-title" th:text="${'Курс: ' + a.course.getName()}"></h1>
                 <ul class="list-unstyled mt-3 mb-4">
                     <li th:text="${a.getCommentary()}"></li>
                     <li th:text="${'Тел: ' + a.getPhone()}"></li>

@@ -16,8 +16,12 @@
 
         <div class="mb-3">
             <label class="form-label">Курс:</label>
-            <input type="text" name="courseName" class="form-control" placeholder="Курс:"
-                   th:value="${det.getCourseName()}">
+<!--            <input type="text" name="courseName" class="form-control" placeholder="Курс:"-->
+<!--                   th:value="${det.course.getName()}">-->
+
+            <select class="form-select">
+                <option th:each="crs:${courses}" th:text="${crs.getName()}" th:value="${crs.id}" th:selected="${det.course.id == crs.id}"></option>
+            </select>
         </div>
 
         <div class="mb-3">
@@ -88,7 +92,14 @@
                         </div>
                         <div class="mb-3">
                             <label>название курса:</label>
-                            <input type="text" class="form-control" name="courseName" th:value="${det.getCourseName()}">
+<!--                            <input type="text" class="form-control" name="courseName" th:value="${det.course.getName()}">-->
+                            <select class="form-select"  name="course.id">
+                                <option th:each="cros:${courses}"
+                                        th:text="${cros.getName()}"
+                                        th:value="${cros.id}"
+                                        th:selected="${cros.id == det.course.id}">
+                                </option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label>комментарии:</label>

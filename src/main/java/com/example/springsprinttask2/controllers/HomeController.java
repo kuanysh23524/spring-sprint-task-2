@@ -3,6 +3,7 @@ package com.example.springsprinttask2.controllers;
 import com.example.springsprinttask2.models.ApplicationRequest;
 import com.example.springsprinttask2.repositories.ApplicationReqRep;
 import com.example.springsprinttask2.services.ApplicationReqService;
+import com.example.springsprinttask2.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +20,14 @@ public class HomeController {
     ApplicationReqService applicationReqService;
     @Autowired
     ApplicationReqRep applicationReqRep;
+    @Autowired
+    CourseService courseService;
 
 
     @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("info", applicationReqService.getAppReq());
+        model.addAttribute("courses" , courseService.getCourses());
         return "home";
     }
 
@@ -36,7 +40,8 @@ public class HomeController {
 //}
 
     @GetMapping("/Add-Page")
-    public String addPage() {
+    public String addPage(Model model) {
+        model.addAttribute("courses" , courseService.getCourses());
         return "Add-Page";
     }
 
@@ -50,6 +55,7 @@ public class HomeController {
     public String DetailsPage(@PathVariable Long id, Model model) {
         System.out.println(id);
         ApplicationRequest applicationRequest = applicationReqService.getById(id);
+        model.addAttribute("courses" , courseService.getCourses());
         model.addAttribute("det", applicationRequest);
         return "/details";
     }

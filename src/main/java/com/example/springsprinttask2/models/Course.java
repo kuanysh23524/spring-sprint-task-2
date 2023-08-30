@@ -7,23 +7,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "ApplicationRequests")
-@Setter
+@Table(name = "courses")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApplicationRequest {
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @ManyToOne
-    private Course course;
-
-    String userName;
-//    String courseName;
-    String commentary;
-    String phone;
-    boolean handled; //обработано или нет
-
+    String name;
+    String description;
+    Integer price;
 }

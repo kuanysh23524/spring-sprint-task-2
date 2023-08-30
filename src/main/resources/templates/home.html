@@ -14,12 +14,12 @@
             <div class="card-body">
 
                 <b style="color: red" th:text="${!inf.isHandled()?'*(новая)':' '}"></b>
-                <!--                    <div th:text="'Заявка от ' + ${inf.getUserName()}"></div>-->
+
                 <div class="d-flex">
                     <div>Заявка от</div>
                     <strong th:text="${inf.getUserName()}" class="ml-1"></strong>
                 </div>
-                <h1 class="card-title pricing-card-title" th:text="${'Курс: ' + inf.getCourseName()}"></h1>
+                <h1 class="card-title pricing-card-title"  th:text=" 'Курс: ' + ${inf.course.getName()}"></h1>
                 <ul class="list-unstyled mt-3 mb-4">
                     <li th:text="${inf.getCommentary()}"></li>
                     <li th:text="${'Тел: ' + inf.getPhone()}"></li>
